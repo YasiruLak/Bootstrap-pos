@@ -1,0 +1,10 @@
+.navColor{
+    background: #4935da;
+}
+
+.nav-item{
+    font-size: 24px;
+    font-family: "Agency FB";
+    font-weight: bold;
+    padding-right: 8px;
+}
