@@ -1,5 +1,5 @@
 .navColor{
-    background: #4935da;
+    background: #34c9eb;
 }
 
 .nav-item{
@@ -7,4 +7,25 @@
     font-family: "Agency FB";
     font-weight: bold;
     padding-right: 8px;
+}
+
+.homeSlide{
+    width: 100%;
+    height: 100px;
+}
+
+.intro{
+    color: #1c1f23;
+}
+
+.intro > h5{
+    font-size: 32px;
+}
+
+.intro > p{
+    font-size: 20px;
+}
+
+.form{
+    align-items: center;
 }
