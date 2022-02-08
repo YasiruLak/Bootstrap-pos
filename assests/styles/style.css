@@ -29,5 +29,11 @@
 
 .order{
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.placeOrder{
+    right: 0;
+    bottom: 0;
+    text-align: right;
 }
