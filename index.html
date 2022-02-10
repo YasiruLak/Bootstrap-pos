@@ -9,6 +9,8 @@
     <link href="assests/fonts/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+
+<!--Nav Bar-->
 <section>
     <nav class="navbar navbar-expand-lg navbar-light navColor">
         <div class="container-fluid">
@@ -19,26 +21,28 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-white" href="index.html">Home</a>
+                        <a aria-current="page" class="nav-link active text-white" id="linkHome" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="customer.html">Customer</a>
+                        <a class="nav-link" id="linkCustomer" href="#">Customer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="item.html">Items</a>
+                        <a class="nav-link" id="linkItem" href="#">Items</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="order.html">Orders</a>
+                        <a class="nav-link" id="linkOrder" href="#">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="purchaseOrder.html">Purchase Order</a>
+                        <a class="nav-link" id="linkPurchaseOrder" href="#">Purchase Order</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </section>
-<section class="homeSlide">
+
+<!--Home Slide-->
+<section class="homeSlide" id="dashboardContent">
     <div id="carouselExampleCaptions" class="carousel slide homeSlide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -79,8 +83,292 @@
     </div>
 </section>
 
+<!--Customer Manage Content Start-->
+<section class="container-fluid mt-3" id="customerContent">
+    <section class="container-fluid mt-3">
+        <p class="fs-1 customer">Customer Manage</p>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="cusID">Customer ID</label>
+                <input class="form-control" id="cusID" placeholder="Customer ID" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="cusName">Customer Name</label>
+                <input class="form-control" id="cusName" placeholder="Customer Name" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="cusAddress">Customer Address</label>
+                <input class="form-control" id="cusAddress" placeholder="Customer Address" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="cusSalary">Customer Tp</label>
+                <input class="form-control" id="cusSalary" placeholder="Customer Tp" type="text">
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid mt-3 button">
+        <button class="btn btn-danger" type="button">Delete</button>
+        <button class="btn btn-success" type="button">Update</button>
+        <button class="btn btn-primary" type="button">Add Customer</button>
+
+    </section>
+
+    <section class="container-fluid mt-3">
+        <form class="d-flex">
+            <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </section>
+
+
+    <section class="row mt-4">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="bg-info text-white">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Address</th>
+                    <th>Customer TP.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>C001</td>
+                    <td>Yasiru Dahanayaka</td>
+                    <td>Panadura</td>
+                    <td>011 2349867</td>
+                </tr>
+                <tr>
+                    <td>C001</td>
+                    <td>Gayani</td>
+                    <td>Galle</td>
+                    <td>011 2349867</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+
+<!--Item Manage Content Start-->
+<section class="container-fluid mt-3" id="itemContent">
+    <section class="container-fluid mt-3">
+        <p class="fs-1 item">Item Manage</p>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="itemCode">Item Code</label>
+                <input class="form-control" id="itemCode" placeholder="Item Code" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="itemName">Item Name</label>
+                <input class="form-control" id="itemName" placeholder="Item Name" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="quantity">Quantity</label>
+                <input class="form-control" id="quantity" placeholder="Quantity" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="unitPrice">Unit Price</label>
+                <input class="form-control" id="unitPrice" placeholder="Unit Price" type="text">
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid mt-3 button">
+        <button class="btn btn-danger" type="button">Delete</button>
+        <button class="btn btn-success" type="button">Update</button>
+        <button class="btn btn-primary" type="button">Add Item</button>
+
+    </section>
+
+    <section class="container-fluid mt-3">
+        <form class="d-flex">
+            <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </section>
+
+
+    <section class="row mt-4">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="bg-info text-white">
+                <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>I001</td>
+                    <td>Milo</td>
+                    <td>120</td>
+                    <td>70.00</td>
+                </tr>
+                <tr>
+                    <td>I001</td>
+                    <td>Kotthu me</td>
+                    <td>80</td>
+                    <td>65.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+
+
+<!--Order Manage Content Start-->
+<section class="container-fluid mt-3" id="orderContent">
+    <section class="container-fluid mt-3">
+        <p class="fs-1 order">Order Manage</p>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="cusID">Customer ID</label>
+                <input class="form-control" id="orderCusID" placeholder="Customer ID" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="itemCode">Item Code</label>
+                <input class="form-control" id="orderItemCode" placeholder="Item Code" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="unitPrice">Unit Price</label>
+                <input class="form-control" id="orderUnitPrice" placeholder="Unit Price" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="availableQty"> Available Quantity</label>
+                <input class="form-control" id="availableQty" placeholder="Available Quantity" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label class="form-label" for="discount">Discount</label>
+                <input class="form-control" id="discount" placeholder="Discount" type="text">
+            </div>
+            <div class="mb-3 col">
+                <label class="form-label" for="quantity">Quantity</label>
+                <input class="form-control" id="orderQuantity" placeholder="Quantity" type="text">
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid mt-3 button">
+        <button class="btn btn-danger" type="button">Remove</button>
+        <button class="btn btn-primary" type="button">Add To Cart</button>
+    </section>
+
+    <section class="row mt-4">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="bg-info text-white">
+                <tr>
+                    <th>Item Code</th>
+                    <th>Unit price</th>
+                    <th>Discount</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>I001</td>
+                    <td>250.00</td>
+                    <td>10%</td>
+                    <td>2</td>
+                    <td>450.00</td>
+                </tr>
+                <tr>
+                    <td>I002</td>
+                    <td>120.00</td>
+                    <td>5%</td>
+                    <td>6</td>
+                    <td>684.00</td>
+                </tr>
+                <tr>
+                    <td>I003</td>
+                    <td>150.00</td>
+                    <td>6%</td>
+                    <td>8</td>
+                    <td>890.00</td>
+                </tr>
+                <tr>
+                    <td>I004</td>
+                    <td>60.00</td>
+                    <td>2%</td>
+                    <td>4</td>
+                    <td>224.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="container-fluid mt-3 placeOrder">
+        <button class="btn btn-success" type="button">Place Order</button>
+    </section>
+
+    <section>
+        <p class="fs-1 order">Total : 80500/=</p>
+    </section>
+</section>
+
+
+<!--Purchase Order Manage Content Start-->
+<section class="container-fluid mt-3" id="purchaseOrderContent">
+    <section>
+        <p class="fs-1 order">Purchase Order</p>
+    </section>
+
+    <section class="row mt-4">
+        <div class="col">
+            <table class="table table-hover">
+                <thead class="bg-info text-white">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>O001</td>
+                    <td>Yasiru Dahanayaka</td>
+                    <td>2022/01/06</td>
+                    <td>3500.00</td>
+                </tr>
+                <tr>
+                    <td>O002</td>
+                    <td>Chamindi Lakchani</td>
+                    <td>2022/02/06</td>
+                    <td>6210.00</td>
+                </tr>
+                <tr>
+                    <td>O003</td>
+                    <td>150.00</td>
+                    <td>2022/01/26</td>
+                    <td>8000.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
 
 
 <script src="assests/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assests/jQuery/jquery-3.6.0.min.js"></script>
+<script src="assests/js/javaScript.js"></script>
+
 </body>
 </html>
