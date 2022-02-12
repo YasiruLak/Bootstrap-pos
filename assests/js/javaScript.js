@@ -46,3 +46,15 @@ $("#linkHome").click(function (){
     $("#orderContent").css("display","none");
     $("#purchaseOrderContent").css("display","none");
 })
+
+
+$("#btnCustomerSave").click(function (){
+    let customerId = $("#txtCusId").val();
+    let customerName = $("#txtCusName").val();
+    let customerAddress = $("#txtCusAddress").val();
+    let customerContact = $("#txtCusContact").val();
+
+    let row = `<tr> <td>${customerId}</td> <td>${customerName}</td> <td>${customerAddress}</td> <td>${customerContact}</td> </tr>`;
+
+    $("#customerTable").append(row);
+})
