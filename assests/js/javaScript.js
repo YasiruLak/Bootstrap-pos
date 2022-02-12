@@ -57,4 +57,9 @@ $("#btnCustomerSave").click(function (){
     let row = `<tr> <td>${customerId}</td> <td>${customerName}</td> <td>${customerAddress}</td> <td>${customerContact}</td> </tr>`;
 
     $("#customerTable").append(row);
+
+    $("#txtCusId").val("");
+    $("#txtCusName").val("");
+    $("#txtCusAddress").val("");
+    $("#txtCusContact").val("");
 })
