@@ -62,4 +62,22 @@ $("#btnCustomerSave").click(function (){
     $("#txtCusName").val("");
     $("#txtCusAddress").val("");
     $("#txtCusContact").val("");
-})
+
+    $("#customerTable>tr").click(function (){
+        let cusId = $(this).children(":eq(0)").text();
+        let cusName = $(this).children(":eq(1)").text();
+        let cusAddress = $(this).children(":eq(2)").text();
+        let cusContact = $(this).children(":eq(3)").text();
+
+        $("#txtCusId").val(cusId);
+        $("#txtCusName").val(cusName);
+        $("#txtCusAddress").val(cusAddress);
+        $("#txtCusContact").val(cusContact);
+
+    });
+
+});
+
+
+
+
