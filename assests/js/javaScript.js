@@ -49,6 +49,9 @@ $("#linkHome").click(function (){
 
 
 $("#btnCustomerSave").click(function (){
+
+    $("#customerTable>tr").off("click");
+
     let customerId = $("#txtCusId").val();
     let customerName = $("#txtCusName").val();
     let customerAddress = $("#txtCusAddress").val();
@@ -76,6 +79,30 @@ $("#btnCustomerSave").click(function (){
 
     });
 
+});
+
+$("#txtCusId").keydown(function (event){
+   if (event.key=="Enter"){
+       $("#txtCusName").focus();
+   }
+});
+
+$("#txtCusName").keydown(function (event){
+    if (event.key=="Enter"){
+        $("#txtCusAddress").focus();
+    }
+});
+
+$("#txtCusAddress").keydown(function (event){
+    if (event.key=="Enter"){
+        $("#txtCusContact").focus();
+    }
+});
+
+$("#txtCusContact").keydown(function (event){
+    if (event.key=="Enter"){
+        $("#btnCustomerSave").focus();
+    }
 });
 
 
