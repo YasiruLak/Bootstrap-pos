@@ -82,7 +82,7 @@ $("#linkHome").click(function (){
     $("#linkPurchaseOrder").css('color','black');
 })
 
-
+//Customer
 $("#btnCustomerSave").click(function (){
 
     $("#customerTable>tr").off("click");
@@ -112,6 +112,14 @@ $("#btnCustomerSave").click(function (){
         $("#txtCusAddress").val(cusAddress);
         $("#txtCusContact").val(cusContact);
 
+        $("#customerTable>tr").dblclick(function (){
+            $(this).remove();
+            $("#txtCusId").val("");
+            $("#txtCusName").val("");
+            $("#txtCusAddress").val("");
+            $("#txtCusContact").val("");
+        });
+
     });
 
 });
@@ -139,6 +147,8 @@ $("#txtCusContact").keydown(function (event){
         $("#btnCustomerSave").focus();
     }
 });
+
+
 
 
 
