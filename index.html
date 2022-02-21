@@ -90,36 +90,40 @@
         <div class="row">
             <div class="mb-3 col">
                 <label class="form-label" for="txtCusId">Customer ID</label>
-                <input class="form-control" id="txtCusId" placeholder="C001" type="text">
+                <input class="form-control" id="txtCusId" placeholder="C00-001" type="text">
+                <p><small class="text-danger pl-1" id="lblCusId"></small></p>
             </div>
             <div class="mb-3 col">
                 <label class="form-label" for="txtCusName">Customer Name</label>
                 <input class="form-control" id="txtCusName" placeholder="Yasiru Dahanayaka" type="text">
+                <p><small class="text-danger pl-1" id="lblCusName"></small></p>
             </div>
         </div>
         <div class="row">
             <div class="mb-3 col">
                 <label class="form-label" for="txtCusAddress">Customer Address</label>
                 <input class="form-control" id="txtCusAddress" placeholder="Mapalagama Galle" type="text">
+                <p><small class="text-danger pl-1" id="lblCusAddress"></small></p>
             </div>
             <div class="mb-3 col">
                 <label class="form-label" for="txtCusContact">Customer Tp</label>
                 <input class="form-control" id="txtCusContact" placeholder="076 8383493" type="text">
+                <p><small class="text-danger pl-1" id="lblCusContact"></small></p>
             </div>
         </div>
     </section>
 
     <section class="container-fluid mt-3 button">
-        <button class="btn btn-danger" type="button">Delete</button>
-        <button class="btn btn-success" type="button">Update</button>
+        <button class="btn btn-danger" id="btnDeleteCustomer" type="button">Delete</button>
+        <button class="btn btn-success" id="btnUpdateCustomer" type="button">Update</button>
         <button class="btn btn-primary" id="btnCustomerSave" type="button">Add Customer</button>
 
     </section>
 
     <section class="container-fluid mt-3">
         <form class="d-flex">
-            <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input aria-label="Search" class="form-control me-2" id="txtSearchCustomer" placeholder="Search" type="search">
+            <button class="btn btn-outline-success" id="btnSearchCustomer" type="submit">Search</button>
         </form>
     </section>
 

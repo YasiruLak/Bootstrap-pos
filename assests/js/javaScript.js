@@ -1,152 +1,317 @@
-
 //Hide All Content
-$("#dashboardContent").css("display","block");
-$("#customerContent").css("display","none");
-$("#itemContent").css("display","none");
-$("#orderContent").css("display","none");
-$("#purchaseOrderContent").css("display","none");
+$("#dashboardContent").css("display", "block");
+$("#customerContent").css("display", "none");
+$("#itemContent").css("display", "none");
+$("#orderContent").css("display", "none");
+$("#purchaseOrderContent").css("display", "none");
 
-$("#linkHome").css('color','white');
-$("#linkCustomer").css('color','black');
-$("#linkItem").css('color','black');
-$("#linkOrder").css('color','black');
-$("#linkPurchaseOrder").css('color','black');
+$("#linkHome").css('color', 'white');
+$("#linkCustomer").css('color', 'black');
+$("#linkItem").css('color', 'black');
+$("#linkOrder").css('color', 'black');
+$("#linkPurchaseOrder").css('color', 'black');
 
-$("#linkCustomer").click(function (){
-    $("#dashboardContent").css("display","none");
-    $("#customerContent").css("display","block");
-    $("#itemContent").css("display","none");
-    $("#orderContent").css("display","none");
-    $("#purchaseOrderContent").css("display","none");
+$("#linkCustomer").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "block");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "none");
+    $("#purchaseOrderContent").css("display", "none");
 
-    $("#linkHome").css('color','black');
-    $("#linkCustomer").css('color','white');
-    $("#linkItem").css('color','black');
-    $("#linkOrder").css('color','black');
-    $("#linkPurchaseOrder").css('color','black');
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'white');
+    $("#linkItem").css('color', 'black');
+    $("#linkOrder").css('color', 'black');
+    $("#linkPurchaseOrder").css('color', 'black');
 })
 
-$("#linkItem").click(function (){
-    $("#dashboardContent").css("display","none");
-    $("#customerContent").css("display","none");
-    $("#itemContent").css("display","block");
-    $("#orderContent").css("display","none");
-    $("#purchaseOrderContent").css("display","none");
+$("#linkItem").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "none");
+    $("#itemContent").css("display", "block");
+    $("#orderContent").css("display", "none");
+    $("#purchaseOrderContent").css("display", "none");
 
-    $("#linkHome").css('color','black');
-    $("#linkCustomer").css('color','black');
-    $("#linkItem").css('color','white');
-    $("#linkOrder").css('color','black');
-    $("#linkPurchaseOrder").css('color','black');
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'white');
+    $("#linkOrder").css('color', 'black');
+    $("#linkPurchaseOrder").css('color', 'black');
 })
 
-$("#linkOrder").click(function (){
-    $("#dashboardContent").css("display","none");
-    $("#customerContent").css("display","none");
-    $("#itemContent").css("display","none");
-    $("#orderContent").css("display","block");
-    $("#purchaseOrderContent").css("display","none");
+$("#linkOrder").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "none");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "block");
+    $("#purchaseOrderContent").css("display", "none");
 
-    $("#linkHome").css('color','black');
-    $("#linkCustomer").css('color','black');
-    $("#linkItem").css('color','black');
-    $("#linkOrder").css('color','white');
-    $("#linkPurchaseOrder").css('color','black');
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'black');
+    $("#linkOrder").css('color', 'white');
+    $("#linkPurchaseOrder").css('color', 'black');
 })
 
-$("#linkPurchaseOrder").click(function (){
-    $("#dashboardContent").css("display","none");
-    $("#customerContent").css("display","none");
-    $("#itemContent").css("display","none");
-    $("#orderContent").css("display","none");
-    $("#purchaseOrderContent").css("display","block");
+$("#linkPurchaseOrder").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "none");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "none");
+    $("#purchaseOrderContent").css("display", "block");
 
-    $("#linkHome").css('color','black');
-    $("#linkCustomer").css('color','black');
-    $("#linkItem").css('color','black');
-    $("#linkOrder").css('color','black');
-    $("#linkPurchaseOrder").css('color','white');
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'black');
+    $("#linkOrder").css('color', 'black');
+    $("#linkPurchaseOrder").css('color', 'white');
 })
 
-$("#linkHome").click(function (){
-    $("#dashboardContent").css("display","block");
-    $("#customerContent").css("display","none");
-    $("#itemContent").css("display","none");
-    $("#orderContent").css("display","none");
-    $("#purchaseOrderContent").css("display","none");
+$("#linkHome").click(function () {
+    $("#dashboardContent").css("display", "block");
+    $("#customerContent").css("display", "none");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "none");
+    $("#purchaseOrderContent").css("display", "none");
 
-    $("#linkHome").css('color','white');
-    $("#linkCustomer").css('color','black');
-    $("#linkItem").css('color','black');
-    $("#linkOrder").css('color','black');
-    $("#linkPurchaseOrder").css('color','black');
+    $("#linkHome").css('color', 'white');
+    $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'black');
+    $("#linkOrder").css('color', 'black');
+    $("#linkPurchaseOrder").css('color', 'black');
 })
 
-//Customer
-$("#btnCustomerSave").click(function (){
+//Customer Content------------------------------------------------------------------------------------------------------------------
 
-    $("#customerTable>tr").off("click");
+// Events start
+$("#btnCustomerSave").click(function () {
+    saveCustomer();
+    clearAll();
+    loadAllCustomers();
+});
 
-    let customerId = $("#txtCusId").val();
+// search customer
+$("#btnSearchCustomer").click(function () {
+    var searchID = $("#txtSearchCustomer").val();
+
+    var response = searchCustomer(searchID);
+    if (response) {
+        $("#txtCusId").val(response.id);
+        $("#txtCusName").val(response.name);
+        $("#txtCusAddress").val(response.address);
+        $("#txtCusContact").val(response.contact);
+    }else{
+        clearAll();
+        alert("No Such a Customer");
+    }
+});
+// Events end
+
+// CRUD OPERATIONS START
+function loadAllCustomers() {
+    $("#customerTable").empty();
+    for (var i of customerDB) {
+        /*create a html row*/
+        let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.contact}</td></tr>`;
+        /*select the table body and append the row */
+        $("#customerTable").append(row);
+    }
+}
+
+function saveCustomer() {
+    //gather customer information
+    let customerID = $("#txtCusId").val();
     let customerName = $("#txtCusName").val();
     let customerAddress = $("#txtCusAddress").val();
     let customerContact = $("#txtCusContact").val();
 
-    let row = `<tr> <td>${customerId}</td> <td>${customerName}</td> <td>${customerAddress}</td> <td>${customerContact}</td> </tr>`;
+    //create Object
+    var customerObject = {
+        id: customerID,
+        name: customerName,
+        address: customerAddress,
+        contact: customerContact
+    };
 
-    $("#customerTable").append(row);
+    customerDB.push(customerObject);
+}
 
-    $("#txtCusId").val("");
-    $("#txtCusName").val("");
-    $("#txtCusAddress").val("");
-    $("#txtCusContact").val("");
+function searchCustomer(id) {
+    for (let i = 0; i < customerDB.length; i++) {
+        if (customerDB[i].id == id) {
+            return customerDB[i];
+        }
+    }
+}
 
-    $("#customerTable>tr").click(function (){
-        let cusId = $(this).children(":eq(0)").text();
-        let cusName = $(this).children(":eq(1)").text();
-        let cusAddress = $(this).children(":eq(2)").text();
-        let cusContact = $(this).children(":eq(3)").text();
+function deleteCustomer(){
+    //write the code
+}
 
-        $("#txtCusId").val(cusId);
-        $("#txtCusName").val(cusName);
-        $("#txtCusAddress").val(cusAddress);
-        $("#txtCusContact").val(cusContact);
+function updateCustomer(){
+    //write the code
+}
 
-        $("#customerTable>tr").dblclick(function (){
-            $(this).remove();
-            $("#txtCusId").val("");
-            $("#txtCusName").val("");
-            $("#txtCusAddress").val("");
-            $("#txtCusContact").val("");
-        });
+// CRUD OPERATIONS ENDED
 
-    });
 
-});
+//validation started
+// customer regular expressions
+const regExCusId = /^(C00-)[0-9]{3,4}$/;
+const regExCusName = /^[A-z ]{5,20}$/;
+const regExCusAddress = /^[0-9/A-z. ,]{7,}$/;
+const regExCusContact = /^[0-9]{3}[-]?[0-9]{7}$/;
 
-$("#txtCusId").keydown(function (event){
-   if (event.key=="Enter"){
-       $("#txtCusName").focus();
-   }
-});
-
-$("#txtCusName").keydown(function (event){
-    if (event.key=="Enter"){
-        $("#txtCusAddress").focus();
+$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('keydown', function (eventOb){
+    if (eventOb.key == "Tab"){
+        eventOb.preventDefault();
     }
 });
 
-$("#txtCusAddress").keydown(function (event){
-    if (event.key=="Enter"){
-        $("#txtCusContact").focus();
+$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('blur', function (){
+    formValid();
+});
+
+//focusing events
+$("#txtCusId").on('keyup', function (eventOb){
+    setButton();
+    if (eventOb.key == "Enter"){
+        checkIfValid();
+    }
+    if (eventOb.key == "Control"){
+        var typedCustomerID = $("#txtCusId").val();
+        var srcCustomer = searchCustomerFromID(typedCustomerID);
+        $("#txtCusId").val(srcCustomer.getCustomerID());
+        $("#txtCusName").val(srcCustomer.getCustomerName());
+        $("#txtCusAddress").val(srcCustomer.getCustomerAddress());
+        $("#txtCusContact").val(srcCustomer.getCustomerContact());
     }
 });
 
-$("#txtCusContact").keydown(function (event){
-    if (event.key=="Enter"){
-        $("#btnCustomerSave").focus();
+$("#txtCusName").on('keyup', function (eventOb) {
+    setButton();
+    if (eventOb.key == "Enter") {
+        checkIfValid();
     }
 });
+
+$("#txtCusAddress").on('keyup', function (eventOb) {
+    setButton();
+    if (eventOb.key == "Enter") {
+        checkIfValid();
+    }
+});
+
+$("#txtCusContact").on('keyup', function (eventOb) {
+    setButton();
+    if (eventOb.key == "Enter") {
+        checkIfValid();
+    }
+});
+
+// focusing events end
+$("#btnCustomerSave").attr('disabled', true);
+
+function clearAll(){
+    $('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').val("");
+    $('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').css('border', '2px solid #ced4da');
+    $('#txtCusId').focus();
+    $("#btnCustomerSave").attr('disabled', true);
+    loadAllCustomers();
+    $("#lblCusId,#lblCusName,#lblCusAddress,#lblCusContact").text("");
+}
+
+function formValid() {
+    var cusID = $("#txtCusId").val();
+    $("#txtCusId").css('border', '2px solid green');
+    $("#lblCusId").text("");
+    if (regExCusId.test(cusID)) {
+        var cusName = $("#txtCusName").val();
+        if (regExCusName.test(cusName)) {
+            $("#txtCusName").css('border', '2px solid green');
+            $("#lblCusName").text("");
+            var cusAddress = $("#txtCusAddress").val();
+            if (regExCusAddress.test(cusAddress)) {
+                var cusContact = $("#txtCusContact").val();
+                var resp = regExCusContact.test(cusContact);
+                $("#txtCusAddress").css('border', '2px solid green');
+                $("#lblCusAddress").text("");
+                if (resp) {
+                    $("#txtCusContact").css('border', '2px solid green');
+                    $("#lblCusContact").text("");
+                    return true;
+                } else {
+                    $("#txtCusContact").css('border', '2px solid red');
+                    $("#lblCusContact").text("Cus Contact is a required field : Pattern 076-8383493");
+                    return false;
+                }
+            } else {
+                $("#txtCusAddress").css('border', '2px solid red');
+                $("#lblCusAddress").text("Cus Name is a required field : Minimum 7");
+                return false;
+            }
+        } else {
+            $("#txtCusName").css('border', '2px solid red');
+            $("#lblCusName").text("Cus Name is a required field : Minimum 5, Max 20, Spaces Allowed");
+            return false;
+        }
+    } else {
+        $("#txtCusId").css('border', '2px solid red');
+        $("#lblCusId").text("Cus ID is a required field : Pattern C00-000");
+        return false;
+    }
+}
+
+function checkIfValid() {
+    var cusID = $("#txtCusId").val();
+    if (regExCusId.test(cusID)) {
+        $("#txtCusName").focus();
+        var cusName = $("#txtCusName").val();
+        if (regExCusName.test(cusName)) {
+            $("#txtCusAddress").focus();
+            var cusAddress = $("#txtCusAddress").val();
+            if (regExCusAddress.test(cusAddress)) {
+                $("#txtCusContact").focus();
+                var cusContact = $("#txtCusContact").val();
+                var resp = regExCusContact.test(cusContact);
+                if (resp) {
+                    let res = confirm("Do you really need to add this Customer..?");
+                    if (res) {
+                        saveCustomer();
+                        clearAll();
+                    }
+                } else {
+                    $("#txtCusContact").focus();
+                }
+            } else {
+                $("#txtCusAddress").focus();
+            }
+        } else {
+            $("#txtCusName").focus();
+        }
+    } else {
+        $("#txtCusId").focus();
+    }
+}
+
+function setButton() {
+    let b = formValid();
+    if (b) {
+        $("#btnCustomerSave").attr('disabled', false);
+    } else {
+        $("#btnCustomerSave").attr('disabled', true);
+    }
+}
+
+$('#btnCustomerSave').click(function () {
+    checkIfValid();
+});
+//validation ended
+
+
+
+
+//Item Content-------------------------------------------------------------------------------------------------------------
 
 
 
