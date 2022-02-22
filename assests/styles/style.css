@@ -1,5 +1,5 @@
 .navColor{
-    background: #0b8529;
+    background: #576574;
 }
 
 .nav-item{
@@ -29,7 +29,7 @@
 
 .order{
     text-align: center;
-    padding-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .placeOrder{
@@ -39,6 +39,6 @@
 }
 
 .head{
-    color: white;
-    background: #0b8529;
+    color: #c8d6e5;
+    background: #222f3e;
 }
