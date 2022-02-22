@@ -1,5 +1,5 @@
 .navColor{
-    background: #34c9eb;
+    background: #0b8529;
 }
 
 .nav-item{
@@ -36,4 +36,9 @@
     right: 0;
     bottom: 0;
     text-align: right;
+}
+
+.head{
+    color: white;
+    background: #0b8529;
 }
