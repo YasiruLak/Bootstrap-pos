@@ -107,12 +107,14 @@
                                 <img alt="..." class="d-block w-100" src="assests/img/girlSupermarket.jpg">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleControls"
+                        <button class="carousel-control-prev" data-bs-slide="prev"
+                                data-bs-target="#carouselExampleControls"
                                 type="button">
                             <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleControls"
+                        <button class="carousel-control-next" data-bs-slide="next"
+                                data-bs-target="#carouselExampleControls"
                                 type="button">
                             <span aria-hidden="true" class="carousel-control-next-icon"></span>
                             <span class="visually-hidden">Next</span>
@@ -194,37 +196,41 @@
     <section class="container-fluid mt-3">
         <div class="row">
             <div class="mb-3 col">
-                <label class="form-label" for="itemCode">Item Code</label>
-                <input class="form-control" id="itemCode" placeholder="I001" type="text">
+                <label class="form-label" for="txtItemCode">Item Code</label>
+                <input class="form-control" id="txtItemCode" placeholder="I001" type="text">
+                <p><small class="text-danger pl-1" id="lblItemId"></small></p>
             </div>
             <div class="mb-3 col">
-                <label class="form-label" for="itemName">Item Name</label>
-                <input class="form-control" id="itemName" placeholder="Maggi Noodles" type="text">
+                <label class="form-label" for="txtItemName">Item Name</label>
+                <input class="form-control" id="txtItemName" placeholder="Maggi Noodles" type="text">
+                <p><small class="text-danger pl-1" id="lblItemName"></small></p>
             </div>
         </div>
         <div class="row">
             <div class="mb-3 col">
-                <label class="form-label" for="quantity">Quantity</label>
-                <input class="form-control" id="quantity" placeholder="40" type="text">
+                <label class="form-label" for="txtItemQuantity">Quantity</label>
+                <input class="form-control" id="txtItemQuantity" placeholder="40" type="text">
+                <p><small class="text-danger pl-1" id="lblItemQty"></small></p>
             </div>
             <div class="mb-3 col">
-                <label class="form-label" for="unitPrice">Unit Price</label>
-                <input class="form-control" id="unitPrice" placeholder="65.00" type="text">
+                <label class="form-label" for="txtItemUnitPrice">Unit Price</label>
+                <input class="form-control" id="txtItemUnitPrice" placeholder="65.00" type="text">
+                <p><small class="text-danger pl-1" id="lblItemUnitPrice"></small></p>
             </div>
         </div>
     </section>
 
     <section class="container-fluid mt-3 button">
-        <button class="btn btn-danger" type="button">Delete</button>
-        <button class="btn btn-success" type="button">Update</button>
-        <button class="btn btn-primary" type="button">Add Item</button>
+        <button class="btn btn-danger" type="button" id="btnItemDelete">Delete</button>
+        <button class="btn btn-success" type="button" id="btnItemUpdate">Update</button>
+        <button class="btn btn-primary" type="button" id="btnItemSave">Add Item</button>
 
     </section>
 
     <section class="container-fluid mt-3">
         <form class="d-flex">
-            <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input aria-label="Search" class="form-control me-2" id="txtSearchItem" placeholder="Search" type="search">
+            <button class="btn btn-outline-success" type="submit" id="btnItemSearch">Search</button>
         </form>
     </section>
 
@@ -240,19 +246,7 @@
                     <th>Unit Price</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>I001</td>
-                    <td>Milo</td>
-                    <td>120</td>
-                    <td>70.00</td>
-                </tr>
-                <tr>
-                    <td>I001</td>
-                    <td>Kotthu me</td>
-                    <td>80</td>
-                    <td>65.00</td>
-                </tr>
+                <tbody id="itemToTable">
                 </tbody>
             </table>
         </div>
@@ -274,34 +268,36 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col mt-3">
-                                                <input type="text" class="form-control" id="orderDate" disabled>
+                                                <input class="form-control" disabled id="orderDate" type="text">
                                             </div>
                                             <div class="col mt-3">
-                                                <input type="text" class="form-control" placeholder="Order Id" aria-label="Order Id" id="orderId">
+                                                <input aria-label="Order Id" class="form-control" id="orderId"
+                                                       placeholder="Order Id" type="text">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-5">
                                     <div class="card border border-primary">
-                                        <div class="card-header">Customer Details</div>
+                                        <div class="card-header">Customer Select</div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end  ">
-                                                    <a href="" class="btn btn-outline-info col-12 col-xl-auto
-                                                mt-2 mt-xl-0 ml-0 ml-xl-2" tabindex="-1" role="button"
-                                                       aria-disabled="true">New Customer</a>
+                                                <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <button class="btn btn-outline-info col-12 col-xl-auto mt-2 mt-xl-0
+                                                    ml-0 ml-xl-2" id="btnGoToCustomer">New Customer
+                                                    </button>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group form-inline mt-3">
-                                                        <select class="form-select" aria-label="Default select example" id="cmbCustomer">
-                                                            <option>Customer Id</option>
-                                                        </select>
+                                                    <div class="col mt-3">
+                                                        <input aria-label="Customer Id" class="form-control"
+                                                               id="orderCustomerId"
+                                                               placeholder="Customer Id" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="col mt-3">
-                                                    <input type="text" class="form-control" placeholder="Customer Name"
-                                                           aria-label="Customer Name" id="orderCustomerName">
+                                                    <input aria-label="Customer Name" class="form-control"
+                                                           id="orderCustomerName"
+                                                           placeholder="Customer Name" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -317,32 +313,43 @@
                         <div class="row">
                             <div class="col">
                                 <div class=" mt-5">
-                                    <div class="card border border-primary" >
+                                    <div class="card border border-primary">
                                         <div class="card-header">Item Select</div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
-                                                    <select class="form-select" aria-label="Default select example" id="cmbItem">
-                                                        <option>Item Id</option>
-                                                    </select>
+                                                    <input aria-label="Item Id" class="form-control"
+                                                           id="orderItemId"
+                                                           placeholder="Item Id" type="text">
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" placeholder="Item Name"
-                                                           aria-label="Item Name" id="orderItemName">
+                                                    <input aria-label="Available Quantity" class="form-control"
+                                                           id="orderItemAvailableQty"
+                                                           placeholder="Available Quantity" type="text">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col mt-3">
-                                                    <input type="text" class="form-control" placeholder="Number Of Pieces"
-                                                           aria-label="Number Of Pieces">
+                                                    <input aria-label="Item Name" class="form-control"
+                                                           id="orderItemName"
+                                                           placeholder="Item Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mt-3">
+                                                    <input aria-label="Number Of Pieces" class="form-control"
+                                                           placeholder="Number Of Pieces"
+                                                           type="text">
                                                 </div>
                                                 <div class="col mt-3">
-                                                    <input type="text" class="form-control" placeholder="Unit Price"
-                                                           aria-label="Unit Price">
+                                                    <input aria-label="Unit Price" class="form-control"
+                                                           placeholder="Unit Price"
+                                                           type="text">
                                                 </div>
                                                 <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
                                                     <button class="btn btn-outline-info col-12 col-xl-auto mt-2 mt-xl-0
-                                                    ml-0 ml-xl-2">Place Order</button>
+                                                    ml-0 ml-xl-2">Add Item
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -354,7 +361,7 @@
                 </div>
             </div>
         </div>
-</article>
+    </article>
 
     <section class="container-fluid mt-3 button">
         <button class="btn btn-danger" type="button">Remove</button>

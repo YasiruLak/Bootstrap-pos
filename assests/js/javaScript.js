@@ -23,7 +23,7 @@ $("#linkCustomer").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'black');
-})
+});
 
 $("#linkItem").click(function () {
     $("#dashboardContent").css("display", "none");
@@ -37,7 +37,7 @@ $("#linkItem").click(function () {
     $("#linkItem").css('color', 'white');
     $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'black');
-})
+});
 
 $("#linkOrder").click(function () {
     $("#dashboardContent").css("display", "none");
@@ -51,7 +51,7 @@ $("#linkOrder").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'white');
     $("#linkPurchaseOrder").css('color', 'black');
-})
+});
 
 $("#linkPurchaseOrder").click(function () {
     $("#dashboardContent").css("display", "none");
@@ -65,7 +65,7 @@ $("#linkPurchaseOrder").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'white');
-})
+});
 
 $("#linkHome").click(function () {
     $("#dashboardContent").css("display", "block");
@@ -79,7 +79,21 @@ $("#linkHome").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'black');
-})
+});
+
+$("#btnGoToCustomer").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "none");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "block");
+    $("#purchaseOrderContent").css("display", "none");
+
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'black');
+    $("#linkOrder").css('color', 'white');
+    $("#linkPurchaseOrder").css('color', 'black');
+});
 
 //Customer Content------------------------------------------------------------------------------------------------------------------
 
@@ -312,6 +326,75 @@ $('#btnCustomerSave').click(function () {
 
 
 //Item Content-------------------------------------------------------------------------------------------------------------
+
+$("#btnItemSave").click(function (){
+    saveItem();
+    clearItemAll();
+    loadAllItem();
+});
+
+$("#btnItemSearch").click(function (){
+    var searchItemId = $("#txtSearchItem").val();
+
+    var itemResponse = searchItem(searchItemId);
+
+    if (itemResponse){
+        $("#txtItemCode").val(itemResponse.id);
+        $("#txtItemName").val(itemResponse.name);
+        $("#txtItemQuantity").val(itemResponse.qty);
+        $("#txtItemUnitPrice").val(itemResponse.unitPrice);
+    }else{
+        clearItemAll();
+        alert("No Such a Item");
+    }
+});
+
+function loadAllItem(){
+    $("#itemToTable").empty();
+    for (var i of itemDB){
+        let itemRow = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.unitPrice}</td></tr>`;
+        $("#itemToTable").append(itemRow);
+    }
+}
+
+function saveItem(){
+    let itemCode = $("#txtItemCode").val();
+    let itemName = $("#txtItemName").val();
+    let itemQty = $("#txtItemQuantity").val();
+    let itemUnitPrice = $("#txtItemUnitPrice").val();
+
+    var itemObject = {
+        id: itemCode,
+        name: itemName,
+        qty: itemQty,
+        unitPrice: itemUnitPrice
+    };
+
+    itemDB.push(itemObject);
+}
+
+function searchItem(id){
+    for (let i = 0; i < itemDB.length; i++){
+        if (itemDB[i].id == id){
+            return itemDB[i];
+        }
+    }
+}
+
+const itemIdRegEx = /^(I00-)[0-9]{3,4}$/;
+const itemNameRegEx = /^[A-z ]{3,30}$/;
+const itemQtyRegEx = /^[0-9]{1,5}$/;
+const itemPriceRegEx = /^[0-9]{2,6}[.][0]$/;
+
+$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('keydown', function (eventOb){
+    if (eventOb.key == "Tab"){
+        eventOb.preventDefault();
+    }
+});
+
+$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('blur', function (){
+    formItemValid();
+});
 
 
 
