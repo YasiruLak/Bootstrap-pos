@@ -51,6 +51,8 @@ $("#linkOrder").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'white');
     $("#linkPurchaseOrder").css('color', 'black');
+
+    setCurrentDate();
 });
 
 $("#linkPurchaseOrder").click(function () {
@@ -114,7 +116,7 @@ $("#btnSearchCustomer").click(function () {
         $("#txtCusName").val(response.name);
         $("#txtCusAddress").val(response.address);
         $("#txtCusContact").val(response.contact);
-    }else{
+    } else {
         clearAll();
         alert("No Such a Customer");
     }
@@ -158,11 +160,11 @@ function searchCustomer(id) {
     }
 }
 
-function deleteCustomer(){
+function deleteCustomer() {
     //write the code
 }
 
-function updateCustomer(){
+function updateCustomer() {
     //write the code
 }
 
@@ -176,23 +178,23 @@ const regExCusName = /^[A-z ]{5,20}$/;
 const regExCusAddress = /^[0-9/A-z. ,]{7,}$/;
 const regExCusContact = /^[0-9]{3}[-]?[0-9]{7}$/;
 
-$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('keydown', function (eventOb){
-    if (eventOb.key == "Tab"){
+$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('keydown', function (eventOb) {
+    if (eventOb.key == "Tab") {
         eventOb.preventDefault();
     }
 });
 
-$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('blur', function (){
+$('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('blur', function () {
     formValid();
 });
 
 //focusing events
-$("#txtCusId").on('keyup', function (eventOb){
+$("#txtCusId").on('keyup', function (eventOb) {
     setButton();
-    if (eventOb.key == "Enter"){
+    if (eventOb.key == "Enter") {
         checkIfValid();
     }
-    if (eventOb.key == "Control"){
+    if (eventOb.key == "Control") {
         var typedCustomerID = $("#txtCusId").val();
         var srcCustomer = searchCustomerFromID(typedCustomerID);
         $("#txtCusId").val(srcCustomer.getCustomerID());
@@ -226,7 +228,7 @@ $("#txtCusContact").on('keyup', function (eventOb) {
 // focusing events end
 $("#btnCustomerSave").attr('disabled', true);
 
-function clearAll(){
+function clearAll() {
     $('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').val("");
     $('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').css('border', '2px solid #ced4da');
     $('#txtCusId').focus();
@@ -323,41 +325,39 @@ $('#btnCustomerSave').click(function () {
 //validation ended
 
 
-
-
 //Item Content-------------------------------------------------------------------------------------------------------------
 
-$("#btnItemSave").click(function (){
+$("#btnItemSave").click(function () {
     saveItem();
     clearItemAll();
     loadAllItem();
 });
 
-$("#btnItemSearch").click(function (){
+$("#btnItemSearch").click(function () {
     var searchItemId = $("#txtSearchItem").val();
 
     var itemResponse = searchItem(searchItemId);
 
-    if (itemResponse){
+    if (itemResponse) {
         $("#txtItemCode").val(itemResponse.id);
         $("#txtItemName").val(itemResponse.name);
         $("#txtItemQuantity").val(itemResponse.qty);
         $("#txtItemUnitPrice").val(itemResponse.unitPrice);
-    }else{
+    } else {
         clearItemAll();
         alert("No Such a Item");
     }
 });
 
-function loadAllItem(){
+function loadAllItem() {
     $("#itemToTable").empty();
-    for (var i of itemDB){
+    for (var i of itemDB) {
         let itemRow = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.unitPrice}</td></tr>`;
         $("#itemToTable").append(itemRow);
     }
 }
 
-function saveItem(){
+function saveItem() {
     let itemCode = $("#txtItemCode").val();
     let itemName = $("#txtItemName").val();
     let itemQty = $("#txtItemQuantity").val();
@@ -373,9 +373,9 @@ function saveItem(){
     itemDB.push(itemObject);
 }
 
-function searchItem(id){
-    for (let i = 0; i < itemDB.length; i++){
-        if (itemDB[i].id == id){
+function searchItem(id) {
+    for (let i = 0; i < itemDB.length; i++) {
+        if (itemDB[i].id == id) {
             return itemDB[i];
         }
     }
@@ -386,22 +386,22 @@ const itemNameRegEx = /^[A-z ]{3,30}$/;
 const itemQtyRegEx = /^[0-9]{1,5}$/;
 const itemPriceRegEx = /^[0-9]{2,6}[.][0]$/;
 
-$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('keydown', function (eventOb){
-    if (eventOb.key == "Tab"){
+$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('keydown', function (eventOb) {
+    if (eventOb.key == "Tab") {
         eventOb.preventDefault();
     }
 });
 
-$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('blur', function (){
+$('#txtItemCode,#txtItemName,#txtItemQuantity,#txtItemUnitPrice').on('blur', function () {
     formItemValid();
 });
 
-$("#txtItemCode").on('keyup', function (eventOb){
+$("#txtItemCode").on('keyup', function (eventOb) {
     setItemButton();
-    if (eventOb.key == "Enter"){
+    if (eventOb.key == "Enter") {
         checkIfItemValid();
     }
-    if (eventOb.key == "Control"){
+    if (eventOb.key == "Control") {
         var typedItemCode = $("#txtItemCode").val();
         var srcItem = searchItemFromCode(typedItemCode);
         $("#txtItemCode").val(srcItem.getItemCode());
@@ -412,23 +412,23 @@ $("#txtItemCode").on('keyup', function (eventOb){
     }
 });
 
-$("#txtItemName").on('keyup', function (eventOb){
+$("#txtItemName").on('keyup', function (eventOb) {
     setItemButton();
-    if (eventOb.key == "Enter"){
+    if (eventOb.key == "Enter") {
         checkIfItemValid();
     }
 });
 
-$("#txtItemQuantity").on('keyup', function (eventOb){
+$("#txtItemQuantity").on('keyup', function (eventOb) {
     setItemButton();
-    if (eventOb.key == "Enter"){
+    if (eventOb.key == "Enter") {
         checkIfItemValid();
     }
 });
 
-$("#txtItemUnitPrice").on('keyup', function (eventOb){
+$("#txtItemUnitPrice").on('keyup', function (eventOb) {
     setItemButton();
-    if (eventOb.key == "Enter"){
+    if (eventOb.key == "Enter") {
         checkIfItemValid();
     }
 });
@@ -444,11 +444,11 @@ function clearItemAll() {
     $("#lblItemId,#lblItemName,#lblItemQty,#lblItemUnitPrice").text("");
 }
 
-function formItemValid(){
+function formItemValid() {
     var itemCode = $("#txtItemCode").val();
     $("#txtItemCode").css('border', '2px solid green');
     $("#lblItemId").text("");
-    if (itemIdRegEx.test(itemCode)){
+    if (itemIdRegEx.test(itemCode)) {
         var itemName = $("#txtItemName").val();
         if (itemNameRegEx.test(itemName)) {
             $("#txtItemName").css('border', '2px solid green');
@@ -475,7 +475,7 @@ function formItemValid(){
             }
         } else {
             $("#txtItemName").css('border', '2px solid red');
-            $("#lblItemName").text("Item Name is a required field : Minimum 5, Max 20, Spaces Allowed");
+            $("#lblItemName").text("Item Name is a required field : Minimum 3, Max 20, Spaces Allowed");
             return false;
         }
     } else {
@@ -517,20 +517,32 @@ function checkIfItemValid() {
     }
 }
 
-function setItemButton(){
+function setItemButton() {
     let i = formItemValid();
     if (i) {
         $("#btnItemSave").attr('disabled', false);
-    }else{
+    } else {
         $("#btnItemSave").attr('disabled', true);
     }
 }
 
-$("#btnItemSave").click(function (){
+$("#btnItemSave").click(function () {
     checkIfItemValid();
-})
+});
 
 
+//Order Content-------------------------------------------------------------------------------------------------------------
+
+function setCurrentDate(){
+    let orderDate = $('#orderDate');
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+    today = dd + '/' + mm + '/' + yyyy;
+
+    orderDate.val(today);
+}
 
 
 
