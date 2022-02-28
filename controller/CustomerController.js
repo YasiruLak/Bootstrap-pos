@@ -2,9 +2,9 @@ $("#btnCustomerSave").click(function () {
     saveCustomer();
     clearAll();
     loadAllCustomers();
+    loadItemDataTextField();
 });
 
-// search customer
 $("#btnSearchCustomer").click(function () {
     var searchID = $("#txtSearchCustomer").val();
 
@@ -20,35 +20,41 @@ $("#btnSearchCustomer").click(function () {
         alert("No Such a Customer");
     }
 });
-// Events end
 
-// CRUD OPERATIONS START
+function loadCustomerDataTextField(){
+    $("#customerTable>tr").click('click',function () {
+        let cusId1 = $(this).children(":eq(0)").text();
+        let cusName1 = $(this).children(":eq(1)").text();
+        let cusAddress1 = $(this).children(":eq(2)").text();
+        let cusContact1 = $(this).children(":eq(3)").text();
+
+        $("#txtCusId").val(cusId1);
+        $("#txtCusName").val(cusName1);
+        $("#txtCusAddress").val(cusAddress1);
+        $("#txtCusContact").val(cusContact1);
+    });
+}
+
 function loadAllCustomers() {
     $("#customerTable").empty();
-    for (var i of customerDB) {
-        /*create a html row*/
-        let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.contact}</td></tr>`;
-        /*select the table body and append the row */
-        $("#customerTable").append(row);
+    for (let i = 0; i < customerDB.length; i++){
+        $("#customerTable").append("<tr>" +
+            "<td>"+customerDB[i].getCid()+"</td>" +
+            "<td>"+customerDB[i].getName()+"</td>" +
+            "<td>"+customerDB[i].getAddress()+"</td>" +
+            "<td>"+customerDB[i].getContact()+"</td>" +
+            "</tr>");
     }
 }
 
 function saveCustomer() {
-    //gather customer information
+
     let customerID = $("#txtCusId").val();
     let customerName = $("#txtCusName").val();
     let customerAddress = $("#txtCusAddress").val();
     let customerContact = $("#txtCusContact").val();
 
-    //create Object
-    var customerObject = {
-        id: customerID,
-        name: customerName,
-        address: customerAddress,
-        contact: customerContact
-    };
-
-    customerDB.push(customerObject);
+    customerDB.push(new CustomerDTO(customerID,customerName,customerAddress,customerContact));
 }
 
 function searchCustomer(id) {
@@ -59,34 +65,40 @@ function searchCustomer(id) {
     }
 }
 
-function deleteCustomer() {
-    //write the code
-}
+$("#btnDeleteCustomer").click(function (){
+    console.log("first");
+    var index = 0;
+    for (var i = 0; i < customerDB.length; i++) {
+        console.log("2")
+        if ($("#txtCusId").val() == customerDB[i].getCid()) {
+            console.log("3")
+            index = i;
+        }
+    }
+    customerDB.splice(index, 1);
+    $(this).closest('tr').remove();
+    loadAllCustomers();
 
-function updateCustomer() {
-        let customerID = $("#txtCusId").val();
-        let customerName = $("#txtCusName").val();
-        let customerAddress = $("#txtCusAddress").val();
-        let customerContact = $("#txtCusContact").val();
+});
 
-        //create Object
-        var customerObject = {
-            id: customerID,
-            name: customerName,
-            address: customerAddress,
-            contact: customerContact
-        };
+$("#btnUpdateCustomer").click(function () {
+    let cusId2 = $("#txtCusId").val();
+    let cusName2 = $("#txtCusName").val();
+    let cusAddress2 = $("#txtCusAddress").val();
+    let cusContact2 = $("#txtCusContact").val();
 
-        customerDB.push(customerObject);
-}
+    for (var i = 0; i < customerDB.length; i++) {
+        if (customerDB[i].getCid() === cusId2){
+            customerDB[i].setName(cusName2);
+            customerDB[i].setAddress(cusAddress2);
+            customerDB[i].setContact(cusContact2);
+        }
+    }
+    clearAll();
+    loadAllCustomers();
+    loadCustomerDataTextField();
+});
 
-
-
-// CRUD OPERATIONS ENDED
-
-
-//validation started
-// customer regular expressions
 const regExCusId = /^(C00-)[0-9]{3,4}$/;
 const regExCusName = /^[A-z ]{5,20}$/;
 const regExCusAddress = /^[0-9/A-z. ,]{7,}$/;
@@ -102,7 +114,6 @@ $('#txtCusId,#txtCusName,#txtCusAddress,#txtCusContact').on('blur', function () 
     formValid();
 });
 
-//focusing events
 $("#txtCusId").on('keyup', function (eventOb) {
     setButton();
     if (eventOb.key == "Enter") {
@@ -139,7 +150,6 @@ $("#txtCusContact").on('keyup', function (eventOb) {
     }
 });
 
-// focusing events end
 $("#btnCustomerSave").attr('disabled', true);
 
 function clearAll() {
@@ -236,4 +246,3 @@ function setButton() {
 $('#btnCustomerSave').click(function () {
     checkIfValid();
 });
-//validation ended

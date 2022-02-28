@@ -83,17 +83,31 @@ $("#linkHome").click(function () {
     $("#linkPurchaseOrder").css('color', 'black');
 });
 
-$("#btnGoToCustomer").click(function () {
+$("#btnGoToItem").click(function () {
     $("#dashboardContent").css("display", "none");
     $("#customerContent").css("display", "none");
-    $("#itemContent").css("display", "none");
-    $("#orderContent").css("display", "block");
+    $("#itemContent").css("display", "block");
+    $("#orderContent").css("display", "none");
     $("#purchaseOrderContent").css("display", "none");
 
     $("#linkHome").css('color', 'black');
     $("#linkCustomer").css('color', 'black');
+    $("#linkItem").css('color', 'white');
+    $("#linkOrder").css('color', 'black');
+    $("#linkPurchaseOrder").css('color', 'black');
+});
+
+$("#btnGoToCustomer").click(function () {
+    $("#dashboardContent").css("display", "none");
+    $("#customerContent").css("display", "block");
+    $("#itemContent").css("display", "none");
+    $("#orderContent").css("display", "none");
+    $("#purchaseOrderContent").css("display", "none");
+
+    $("#linkHome").css('color', 'black');
+    $("#linkCustomer").css('color', 'white');
     $("#linkItem").css('color', 'black');
-    $("#linkOrder").css('color', 'white');
+    $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'black');
 });
 
