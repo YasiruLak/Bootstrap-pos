@@ -2,6 +2,7 @@ $("#btnItemSave").click(function () {
     saveItem();
     clearItemAll();
     loadAllItem();
+    loadItemDataTextField();
 });
 
 $("#btnItemSearch").click(function () {
@@ -22,9 +23,13 @@ $("#btnItemSearch").click(function () {
 
 function loadAllItem() {
     $("#itemToTable").empty();
-    for (var i of itemDB) {
-        let itemRow = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.unitPrice}</td></tr>`;
-        $("#itemToTable").append(itemRow);
+    for (let i = 0; i < itemDB.length; i++){
+        $("#itemToTable").append("<tr>" +
+            "<td>"+itemDB[i].getIid()+"</td>" +
+            "<td>"+itemDB[i].getName()+"</td>" +
+            "<td>"+itemDB[i].getQty()+"</td>" +
+            "<td>"+itemDB[i].getPrice()+"</td>" +
+            "</tr>");
     }
 }
 
@@ -34,14 +39,7 @@ function saveItem() {
     let itemQty = $("#txtItemQuantity").val();
     let itemUnitPrice = $("#txtItemUnitPrice").val();
 
-    var itemObject = {
-        id: itemCode,
-        name: itemName,
-        qty: itemQty,
-        unitPrice: itemUnitPrice
-    };
-
-    itemDB.push(itemObject);
+    itemDB.push(new ItemDTO(itemCode,itemName,itemQty,itemUnitPrice));
 }
 
 function searchItem(id) {
@@ -51,6 +49,51 @@ function searchItem(id) {
         }
     }
 }
+
+$("#btnItemDelete").click(function (){
+    var index = 0;
+    for (var i = 0; i < itemDB.length; i++) {
+        if ($("#txtItemCode").val() == itemDB[i].getIid()) {
+            index = i;
+        }
+    }
+    itemDB.splice(index, 1);
+    $(this).closest('tr').remove();
+    loadAllItem();
+    clearItemAll();
+});
+
+function loadItemDataTextField() {
+    $("#itemToTable>tr").click('click',function () {
+        let itemId = $(this).children(":eq(0)").text();
+        let itemName = $(this).children(":eq(1)").text();
+        let itemQty = $(this).children(":eq(2)").text();
+        let itemPrice = $(this).children(":eq(3)").text();
+
+        $("#txtItemCode").val(itemId);
+        $("#txtItemName").val(itemName);
+        $("#txtItemQuantity").val(itemQty);
+        $("#txtItemUnitPrice").val(itemPrice);
+    });
+}
+
+$("#btnItemUpdate").click(function () {
+    let itemId2 = $("#txtItemCode").val();
+    let itemName2 = $("#txtItemName").val();
+    let itemQty2 = $("#txtItemQuantity").val();
+    let itemPrice2 = $("#txtItemUnitPrice").val();
+
+    for (var i = 0; i < itemDB.length; i++) {
+        if (itemDB[i].getIid() === itemId2){
+            itemDB[i].setName(itemName2);
+            itemDB[i].setQty(itemQty2);
+            itemDB[i].setPrice(itemPrice2);
+        }
+    }
+    clearItemAll();
+    loadAllItem();
+    loadItemDataTextField();
+});
 
 const itemIdRegEx = /^(I00-)[0-9]{3,4}$/;
 const itemNameRegEx = /^[A-z ]{3,30}$/;

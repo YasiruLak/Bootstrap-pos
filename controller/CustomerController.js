@@ -2,7 +2,8 @@ $("#btnCustomerSave").click(function () {
     saveCustomer();
     clearAll();
     loadAllCustomers();
-    loadItemDataTextField();
+    loadCustomerDataTextField();
+
 });
 
 $("#btnSearchCustomer").click(function () {
@@ -66,18 +67,16 @@ function searchCustomer(id) {
 }
 
 $("#btnDeleteCustomer").click(function (){
-    console.log("first");
     var index = 0;
     for (var i = 0; i < customerDB.length; i++) {
-        console.log("2")
         if ($("#txtCusId").val() == customerDB[i].getCid()) {
-            console.log("3")
             index = i;
         }
     }
     customerDB.splice(index, 1);
     $(this).closest('tr').remove();
     loadAllCustomers();
+    clearAll();
 
 });
 

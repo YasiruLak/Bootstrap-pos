@@ -1,35 +1,35 @@
-function ItemDTO(id,name,qty,unitPrice){
-    this.__id = id;
-    this.__name = name;
-    this.__qty = qty;
-    this.__unitPrice = unitPrice;
+function ItemDTO(itemCode,itemName,itemQty,itemUnitPrice){
+    this.__id = itemCode;
+    this.__name = itemName;
+    this.__qty = itemQty;
+    this.__unitPrice = itemUnitPrice;
 
     this.getIid = function () {
         return this.__id;
     }
-    this.setIid = function (id) {
-        this.__id = id;
+    this.setIid = function (itemCode) {
+        this.__id = itemCode;
     }
 
     this.getName = function () {
         return this.__name;
     }
-    this.setName = function (name) {
-        this.__name = name;
+    this.setName = function (itemName) {
+        this.__name = itemName;
     }
 
     this.getQty = function () {
         return this.__qty;
     }
-    this.setQty = function (qty) {
-        this.qty = qty;
+    this.setQty = function (itemQty) {
+        this.qty = itemQty;
     }
 
     this.getPrice = function () {
         return this.__unitPrice;
     }
-    this.setPrice = function (unitPrice) {
-        this.__unitPrice = unitPrice;
+    this.setPrice = function (itemUnitPrice) {
+        this.__unitPrice = itemUnitPrice;
     }
 }
 
