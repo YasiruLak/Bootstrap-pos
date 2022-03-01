@@ -56,6 +56,8 @@ function saveCustomer() {
     let customerContact = $("#txtCusContact").val();
 
     customerDB.push(new CustomerDTO(customerID,customerName,customerAddress,customerContact));
+
+    loadCustomerComboBoxData("<option>"+customerID+"</option>");
 }
 
 function searchCustomer(id) {

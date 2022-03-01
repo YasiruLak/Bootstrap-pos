@@ -271,7 +271,7 @@
                                                 <input class="form-control" disabled id="orderDate" type="text">
                                             </div>
                                             <div class="col mt-3">
-                                                <input aria-label="Order Id" class="form-control" id="orderId"
+                                                <input aria-label="Order Id" class="form-control" disabled id="txtOrderId"
                                                        placeholder="Order Id" type="text">
                                             </div>
                                         </div>
@@ -289,14 +289,14 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="col mt-3">
-                                                        <input aria-label="Customer Id" class="form-control"
-                                                               id="orderCustomerId"
-                                                               placeholder="Customer Id" type="text">
+                                                        <select class="form-select" aria-label="Default select example" id="orderCusCmb">
+                                                            <option>Customer Id</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col mt-3">
                                                     <input aria-label="Customer Name" class="form-control"
-                                                           id="orderCustomerName"
+                                                           id="txtOrderCusName"
                                                            placeholder="Customer Name" type="text">
                                                 </div>
                                             </div>
@@ -318,32 +318,40 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
-                                                    <input aria-label="Item Id" class="form-control"
-                                                           id="orderItemId"
-                                                           placeholder="Item Id" type="text">
+                                                    <select class="form-select" aria-label="Default select example" id="orderItemCmb">
+                                                        <option>Item Code</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col">
                                                     <input aria-label="Available Quantity" class="form-control"
-                                                           id="orderItemAvailableQty"
+                                                           id="txtOrderItemAvailableQty"
                                                            placeholder="Available Quantity" type="text">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col mt-3">
                                                     <input aria-label="Item Name" class="form-control"
-                                                           id="orderItemName"
+                                                           id="txtOrderItemName"
                                                            placeholder="Item Name" type="text">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col mt-3">
+                                                    <input aria-label="Unit Price" class="form-control"
+                                                           id="txtOrderItemPrice"
+                                                           placeholder="Unit Price"
+                                                           type="text">
+                                                </div>
+                                                <div class="col mt-3">
                                                     <input aria-label="Number Of Pieces" class="form-control"
+                                                           id="txtOrderItemNumQty"
                                                            placeholder="Number Of Pieces"
                                                            type="text">
                                                 </div>
                                                 <div class="col mt-3">
-                                                    <input aria-label="Unit Price" class="form-control"
-                                                           placeholder="Unit Price"
+                                                    <input aria-label="Discount" class="form-control"
+                                                           id="txtOrderDiscount"
+                                                           placeholder="Discount"
                                                            type="text">
                                                 </div>
                                                 <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
@@ -363,9 +371,15 @@
         </div>
     </article>
 
+    <div class="row">
+        <div class="col mt-4">
+            <p class="fs-1 order">Total : 80500/=</p>
+        </div>
+    </div>
+
     <section class="container-fluid mt-3 button">
-        <button class="btn btn-danger" type="button">Remove</button>
-        <button class="btn btn-primary" type="button">Add To Cart</button>
+        <button class="btn btn-danger" type="button" id="btnRemove">Remove</button>
+        <button class="btn btn-primary" type="button" id="btnAddToCart">Add To Cart</button>
     </section>
 
     <section class="row mt-4">
@@ -375,40 +389,11 @@
                 <tr class="head">
                     <th>Item Code</th>
                     <th>Unit price</th>
-                    <th>Discount</th>
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>I001</td>
-                    <td>250.00</td>
-                    <td>10%</td>
-                    <td>2</td>
-                    <td>450.00</td>
-                </tr>
-                <tr>
-                    <td>I002</td>
-                    <td>120.00</td>
-                    <td>5%</td>
-                    <td>6</td>
-                    <td>684.00</td>
-                </tr>
-                <tr>
-                    <td>I003</td>
-                    <td>150.00</td>
-                    <td>6%</td>
-                    <td>8</td>
-                    <td>890.00</td>
-                </tr>
-                <tr>
-                    <td>I004</td>
-                    <td>60.00</td>
-                    <td>2%</td>
-                    <td>4</td>
-                    <td>224.00</td>
-                </tr>
+                <tbody id="addToCartTable">
                 </tbody>
             </table>
         </div>
@@ -416,10 +401,6 @@
 
     <section class="container-fluid mt-3 placeOrder">
         <button class="btn btn-success" type="button">Place Order</button>
-    </section>
-
-    <section>
-        <p class="fs-1 order">Total : 80500/=</p>
     </section>
 </section>
 

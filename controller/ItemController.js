@@ -40,6 +40,8 @@ function saveItem() {
     let itemUnitPrice = $("#txtItemUnitPrice").val();
 
     itemDB.push(new ItemDTO(itemCode,itemName,itemQty,itemUnitPrice));
+
+    loadItemComboBoxData("<option>"+itemCode+"</option>");
 }
 
 function searchItem(id) {
