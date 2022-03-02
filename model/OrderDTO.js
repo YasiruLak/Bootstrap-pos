@@ -1,22 +1,21 @@
-function Orders(oid, cid, date, discount, tot) {
-    this.__oid = oid;
-    this.__cid = cid;
+function OrderDTO(orderId, customerId, date, total) {
+    this.__oid = orderId;
+    this.__cid = customerId;
     this.__date = date;
-    this.__discount = discount;
-    this.__tot = tot;
+    this.__tot = total;
 
-    this.getOid = function () {
+    this.getOrderId = function () {
         return this.__oid;
     }
-    this.setOid = function (oid) {
-        this.__oid = oid;
+    this.setOrderId = function (orderId) {
+        this.__oid = orderId;
     }
 
-    this.getCustID = function () {
+    this.getCustomerID = function () {
         return this.__cid;
     }
-    this.setCustId = function (cid) {
-        this.__cid = cid;
+    this.setCustomerID = function (customerId) {
+        this.__cid = customerId;
     }
 
     this.getDate = function () {
@@ -26,17 +25,10 @@ function Orders(oid, cid, date, discount, tot) {
         this.__date = date;
     }
 
-    this.getDiscount = function () {
-        return this.__discount;
-    }
-    this.setDiscount = function (discount) {
-        this.__discount = discount;
-    }
-
-    this.getTot = function () {
+    this.getTotal = function () {
         return this.__tot;
     }
-    this.setTot = function (tot) {
-        this.__tot = tot;
+    this.setTotal = function (total) {
+        this.__tot = total;
     }
 }

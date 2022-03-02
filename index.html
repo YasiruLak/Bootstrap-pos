@@ -372,8 +372,11 @@
     </article>
 
     <div class="row">
-        <div class="col mt-4">
-            <p class="fs-1 order">Total : 80500/=</p>
+        <div class="col-1 mt-4">
+            <p class="fs-1 order" >Total</p>
+        </div>
+        <div class="col-2 mt-4">
+            <input type="text" id="txtOrderTotal" placeholder="8000">
         </div>
     </div>
 
@@ -389,6 +392,7 @@
                 <tr class="head">
                     <th>Item Code</th>
                     <th>Unit price</th>
+                    <th>Discount</th>
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
@@ -400,7 +404,7 @@
     </section>
 
     <section class="container-fluid mt-3 placeOrder">
-        <button class="btn btn-success" type="button">Place Order</button>
+        <button class="btn btn-success" id="btnPlaceOrder" type="button">Place Order</button>
     </section>
 </section>
 
@@ -450,6 +454,7 @@
 <script src="controller/ItemController.js"></script>
 <script src="controller/OrderController.js"></script>
 <script src="model/ItemDTO.js"></script>
+<script src="model/OrderDTO.js"></script>
 <script src="model/CustomerDTO.js"></script>
 <script src="db/DB.js"></script>
 

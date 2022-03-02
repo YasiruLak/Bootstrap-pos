@@ -31,12 +31,10 @@ function loadCustomerComboBoxData(value) {
 }
 
 $("#orderCusCmb").click(function () {
-    console.log("1");
     let cusId = $("#orderCusCmb").val();
     let cusName = $("#txtOrderCusName").val();
 
     for (var i = 0; i < customerDB.length; i++) {
-        console.log("2");
         if (customerDB[i].getCid() == cusId) {
             cusName = customerDB[i].getName();
 
@@ -51,14 +49,12 @@ function loadItemComboBoxData(value) {
 }
 
 $("#orderItemCmb").click(function () {
-    console.log("1");
     let itemCode = $("#orderItemCmb").val();
     let itemName = $("#txtOrderCusName").val();
     let itemQty = $("#txtOrderCusName").val();
     let itemPrice = $("#txtOrderCusName").val();
 
     for (var i = 0; i < itemDB.length; i++) {
-        console.log("2");
         if (itemDB[i].getIid() == itemCode) {
             itemName = itemDB[i].getName();
             itemQty = itemDB[i].getQty();
@@ -73,9 +69,66 @@ $("#orderItemCmb").click(function () {
 });
 
 $("#btnAddToCart").click(function (){
-    $("#addToCartTable").empty();
+    loadOrderDetail();
 
 });
+
+let itemPrice;
+let itemQty;
+let itemOrderQty;
+let itemDiscount;
+
+function loadOrderDetail() {
+    $("#addToCartTable").empty();
+
+    // itemCode = $("#orderItemCmb").val();
+    // itemName = $("#txtOrderItemName").val();
+    itemPrice = $("#txtOrderItemPrice").val();
+    itemQty = $("#txtOrderItemAvailableQty").val();
+    itemOrderQty = $("#txtOrderItemNumQty").val();
+    itemDiscount = $("#txtOrderDiscount").val();
+    // cash = $("#cash").val();
+
+    // let availableQty = itemQty - itemOrderQty;
+    // $("#orderQtyOnHand").val(availableQty);
+    // total = itemOrderQty * itemPrice;
+
+    // $("#totalPrice").val(itemOrderQty * itemPrice);
+
+    let total;
+    let discount;
+
+    total = itemPrice * itemOrderQty;
+    discount = (total/100)*itemDiscount;
+    total = total-discount;
+
+
+    for (let i = 0; i < itemDB.length; i++){
+        $("#addToCartTable").append("<tr>" +
+            "<td>"+itemDB[i].getIid()+"</td>" +
+            // "<td>"+itemDB[i].getName()+"</td>" +
+            "<td>"+itemDB[i].getPrice()+"</td>" +
+            "<td>"+discount+"</td>" +
+            "<td>"+itemOrderQty+"</td>" +
+            "<td>"+total+"</td>" +
+            "</tr>");
+    }
+
+}
+
+$("#btnPlaceOrder").click(function (){
+    let oid = $("#txtOrderId").val();
+    let cId = $("#orderCusCmb").val();
+    let oDate = $("#orderDate").val();
+    let total = $("#txtOrderTotal").val();
+
+    orderDB.push(new OrderDTO(oid,cId,oDate,total));
+
+    console.log("1");
+
+    generateOrderID();
+});
+
 
 
 
