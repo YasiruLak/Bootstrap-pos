@@ -1,11 +1,15 @@
+*{
+    font-family: 'Titillium Web', sans-serif;
+}
+
 .navColor{
     background: #576574;
 }
 
 .nav-item{
     font-size: 24px;
-    font-family: "Agency FB";
-    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bolder;
     padding-right: 8px;
 }
 
@@ -42,4 +46,20 @@
     color: #c8d6e5;
     background: #222f3e;
 }
+
+#total{
+    font-size: 30px;
+    color: #3d98ef;
+}
+
+#total-text{
+    color: #3d98ef;
+    font-size: 13px;
+}
+
+#contentBox{
+    margin-left: 900px;
+}
+
+
 

@@ -53,6 +53,7 @@ $("#linkOrder").click(function () {
     $("#linkPurchaseOrder").css('color', 'black');
 
     setCurrentDate();
+    generateOrderID();
 });
 
 $("#linkPurchaseOrder").click(function () {
