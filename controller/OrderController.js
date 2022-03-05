@@ -170,7 +170,7 @@ function loadOrderDetail() {
         "<td>" + itemName + "</td>" +
         "<td>" + itemOrderQty + "</td>" +
         "<td>" + itemPrice + "</td>" +
-        "<td>" + discount + "</td>" +
+        "<td>" + itemDiscount + "</td>" +
         "<td>" + total + "</td>" +
         "</tr>");
 }
