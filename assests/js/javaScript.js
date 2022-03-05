@@ -68,6 +68,8 @@ $("#linkPurchaseOrder").click(function () {
     $("#linkItem").css('color', 'black');
     $("#linkOrder").css('color', 'black');
     $("#linkPurchaseOrder").css('color', 'white');
+
+    loadAllOrderDetail();
 });
 
 $("#linkHome").click(function () {

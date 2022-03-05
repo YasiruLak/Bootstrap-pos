@@ -1,5 +1,3 @@
-
-
 function setCurrentDate(){
     let orderDate = $('#orderDate');
     let today = new Date();
@@ -50,9 +48,9 @@ function loadItemComboBoxData(value) {
 
 $("#orderItemCmb").click(function () {
     let itemCode = $("#orderItemCmb").val();
-    let itemName = $("#txtOrderCusName").val();
-    let itemQty = $("#txtOrderCusName").val();
-    let itemPrice = $("#txtOrderCusName").val();
+    let itemName = $("#txtOrderItemName").val();
+    let itemQty = $("#txtOrderItemNumQty").val();
+    let itemPrice = $("#txtOrderItemPrice").val();
 
     for (var i = 0; i < itemDB.length; i++) {
         if (itemDB[i].getIid() == itemCode) {
@@ -71,46 +69,43 @@ $("#orderItemCmb").click(function () {
 var tableRow;
 $("#btnAddToCart").click(function (){
 
-
-
     var duplicate = false;
-    /* for (let i = 0; 1 < $("#addToCartTable tr").length; i++) {
-         if ($("#orderItemCmb option:selected").text() == $("#addToCartTable tr").children(":nth-child(1)")[i].innerHTML) {
-             duplicate = true;
-         }
-     }*/
+
     for (var i = 0; i < $("#addToCartTable tr").length; i++) {
-        if($("#orderItemCmb option:selected").text()==$("#addToCartTable tr").children(':nth-child(1)')[i].innerText){
+
+        if($("#orderItemCmb option:selected").text() == $("#addToCartTable tr").children(':nth-child(1)')[i].innerText){
             duplicate=true;
+
         }
     }
 
     if (duplicate != true) {
+
         loadOrderDetail();
         minusQty($("#txtOrderItemNumQty").val());
+
     }else if (duplicate == true){
-        manageQuantity(tableRow.children(':nth-child(4)').text(),$("#txtOrderItemNumQty").val());
-        $(tableRow).children(':nth-child(4)').text($("#txtOrderItemNumQty").val());
+
+        manageQuantity(tableRow.children(':nth-child(3)').text(),$("#txtOrderItemNumQty").val());
+        $(tableRow).children(':nth-child(3)').text($("#txtOrderItemNumQty").val());
 
     }
-    // clearItemData();
 
     $("#addToCartTable>tr").click('click',function () {
         tableRow = $(this);
         let itemCode = $(this).children(":eq(0)").text();
-        let unitPrice = $(this).children(":eq(1)").text();
-        let discount = $(this).children(":eq(2)").text();
-        let qty = $(this).children(":eq(3)").text();
-        let total = $(this).children(":eq(4)").text();
+        let itemName = $(this).children(":eq(1)").text();
+        let qty = $(this).children(":eq(2)").text();
+        let unitPrice = $(this).children(":eq(3)").text();
+        let discount = $(this).children(":eq(4)").text();
+        let total = $(this).children(":eq(5)").text();
 
         $("#orderItemCmb").val(itemCode);
-        // $("#txtOrderItemName").val(cusName1);
-        // $("#txtOrderItemAvailableQty").val(cusAddress1);
+        $("#txtOrderItemName").val(itemName);
         $("#txtOrderItemPrice").val(unitPrice);
         $("#txtOrderItemNumQty").val(qty);
         $("#txtOrderDiscount").val(discount);
-
-
+        $("#total").val(total);
 
     });
 
@@ -119,12 +114,12 @@ $("#btnAddToCart").click(function (){
 function manageQuantity(prevQty,nowQty){
     var prevQty = parseInt(prevQty);
     var nowQty = parseInt(nowQty);
-    var avilbleQty = parseInt($("#txtOrderItemAvailableQty").val());
+    var availableQty = parseInt($("#txtOrderItemAvailableQty").val());
 
-    avilbleQty = avilbleQty + prevQty;
-    avilbleQty = avilbleQty - nowQty;
+    availableQty = availableQty + prevQty;
+    availableQty = availableQty - nowQty;
 
-    $("#txtOrderItemAvailableQty").val(avilbleQty);
+    $("#txtOrderItemAvailableQty").val(availableQty);
 
 }
 
@@ -137,9 +132,9 @@ function minusQty(orderQty){
     $("#txtOrderItemAvailableQty").val(manageQty);
 }
 
-// function clearItemData() {
-//     $('#orderItemCmb,#txtOrderItemName,#txtOrderItemAvailableQty,#txtOrderItemPrice,#txtOrderItemNumQty,#txtOrderDiscount').val("");
-// }
+function clearItemData() {
+    $('#orderItemCmb,#txtOrderItemName,#txtOrderItemAvailableQty,#txtOrderItemPrice,#txtOrderItemNumQty,#txtOrderDiscount').val("");
+}
 
 function clearCustomerData(){
     $('#orderCusCmb,#txtOrderCusName').val("");
@@ -161,13 +156,6 @@ function loadOrderDetail() {
     itemQty = $("#txtOrderItemAvailableQty").val();
     itemOrderQty = $("#txtOrderItemNumQty").val();
     itemDiscount = $("#txtOrderDiscount").val();
-    // cash = $("#cash").val();
-
-    // let availableQty = itemQty - itemOrderQty;
-    // $("#orderQtyOnHand").val(availableQty);
-    // total = itemOrderQty * itemPrice;
-
-    // $("#totalPrice").val(itemOrderQty * itemPrice);
 
     let total;
     let discount;
@@ -179,19 +167,21 @@ function loadOrderDetail() {
 
     $("#addToCartTable").append("<tr>" +
         "<td>" + itemCode + "</td>" +
+        "<td>" + itemName + "</td>" +
+        "<td>" + itemOrderQty + "</td>" +
         "<td>" + itemPrice + "</td>" +
         "<td>" + discount + "</td>" +
-        "<td>" + itemOrderQty + "</td>" +
         "<td>" + total + "</td>" +
         "</tr>");
 }
 
 $("#btnPlaceOrder").click(function (){
-
-    // generateOrderID();
-    // clearItemData();
-    clearCustomerData();
     placeOrder();
+    pushOrderDetail();
+    generateOrderID();
+    clearItemData();
+    clearCustomerData();
+    $("#addToCartTable").empty();
 
 });
 
@@ -199,23 +189,23 @@ function placeOrder(){
     let oid = $("#txtOrderId").val();
     let cId = $("#orderCusCmb").val();
     let oDate = $("#orderDate").val();
-    let total = $("#txtOrderTotal").val();
+    let total = $("#lblTotal").val();
 
     orderDB.push(new OrderDTO(oid, cId, oDate, total));
-    pushOrderDetail();
-    generateOrderID();
 
-    console.log("1");
-
-    // generateOrderID();
 }
 
 function pushOrderDetail(){
     for (let i = 0; i < $("#addToCartTable tr").length; i++){
         var orderDetail = new OrderDetailDTO($("#txtOrderId").val(),
+            $("#orderDate").val(),
+            $("#orderCusCmb").val(),
+            $("#txtOrderCusName").val(),
             $("#addToCartTable tr").children(':nth-child(1)')[i].innerText,
-            $("#addToCartTable tr").children(':nth-child(4)')[i].innerText,
-            $("#addToCartTable tr").children(':nth-child(5)')[i].innerText)
+            $("#addToCartTable tr").children(':nth-child(2)')[i].innerText,
+            $("#addToCartTable tr").children(':nth-child(3)')[i].innerText,
+            $("#addToCartTable tr").children(':nth-child(5)')[i].innerText,
+            $("#addToCartTable tr").children(':nth-child(6)')[i].innerText)
 
         orderDetailDB.push(orderDetail);
     }
