@@ -10,8 +10,8 @@ function setCurrentDate(){
 
 function generateOrderID() {
     $("#txtOrderId").val("O00-0001");
-    var orderId=orderDB[orderDB.length-1].getOrderId();
-    var tempId = parseInt(orderId.split("-")[1]);
+    let orderId = orderDB[orderDB.length - 1].getOrderId();
+    let tempId = parseInt(orderId.split("-")[1]);
     tempId = tempId+1;
     if (tempId <= 9){
         $("#txtOrderId").val("O00-000"+tempId);
@@ -35,7 +35,6 @@ $("#orderCusCmb").click(function () {
     for (var i = 0; i < customerDB.length; i++) {
         if (customerDB[i].getCid() == cusId) {
             cusName = customerDB[i].getName();
-
             $("#txtOrderCusName").val(cusName);
 
         }
@@ -74,7 +73,7 @@ $("#btnAddToCart").click(function (){
     for (var i = 0; i < $("#addToCartTable tr").length; i++) {
 
         if($("#orderItemCmb option:selected").text() == $("#addToCartTable tr").children(':nth-child(1)')[i].innerText){
-            duplicate=true;
+            duplicate = true;
 
         }
     }
@@ -110,6 +109,11 @@ $("#btnAddToCart").click(function (){
     });
 
 });
+
+var tableCol;
+function calcSubTotal(){
+
+}
 
 function manageQuantity(prevQty,nowQty){
     var prevQty = parseInt(prevQty);

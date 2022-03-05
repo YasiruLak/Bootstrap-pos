@@ -14,3 +14,15 @@ function loadAllOrderDetail() {
             "</tr>");
     }
 }
+
+function loadAllOrder() {
+    $("#orderTable").empty();
+    for (let i = 0; i < orderDB.length; i++){
+        $("#orderTable").append("<tr>" +
+            "<td>"+orderDB[i].getOrderId()+"</td>" +
+            "<td>"+orderDB[i].getCustomerID()+"</td>" +
+            "<td>"+orderDB[i].getDate()+"</td>" +
+            "<td>"+orderDB[i].getTotal()+"</td>" +
+            "</tr>");
+    }
+}

@@ -70,6 +70,7 @@ $("#linkPurchaseOrder").click(function () {
     $("#linkPurchaseOrder").css('color', 'white');
 
     loadAllOrderDetail();
+    loadAllOrder();
 });
 
 $("#linkHome").click(function () {
