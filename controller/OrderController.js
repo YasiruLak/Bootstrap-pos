@@ -66,6 +66,7 @@ $("#orderItemCmb").click(function () {
 });
 
 var tableRow;
+
 $("#btnAddToCart").click(function (){
 
     var duplicate = false;
@@ -82,15 +83,20 @@ $("#btnAddToCart").click(function (){
 
         loadOrderDetail();
         minusQty($("#txtOrderItemNumQty").val());
+        manageTotal($("#txtOrderItemNumQty").val() * $("#txtOrderItemPrice").val());
 
     }else if (duplicate == true){
 
         manageQuantity(tableRow.children(':nth-child(3)').text(),$("#txtOrderItemNumQty").val());
         $(tableRow).children(':nth-child(3)').text($("#txtOrderItemNumQty").val());
 
+        updateManageTotal(tableRow.children(':nth-child(6)').text(),$("#txtOrderItemNumQty").val() * $("#txtOrderItemPrice").val());
+        $(tableRow).children(':nth-child(6)').text($("#txtOrderItemNumQty").val() * $("#txtOrderItemPrice").val());
+
     }
 
     $("#addToCartTable>tr").click('click',function () {
+
         tableRow = $(this);
         let itemCode = $(this).children(":eq(0)").text();
         let itemName = $(this).children(":eq(1)").text();
@@ -104,15 +110,26 @@ $("#btnAddToCart").click(function (){
         $("#txtOrderItemPrice").val(unitPrice);
         $("#txtOrderItemNumQty").val(qty);
         $("#txtOrderDiscount").val(discount);
-        $("#total").val(total);
 
     });
 
 });
 
-var tableCol;
-function calcSubTotal(){
+var tot = 0;
+var discount;
+function manageTotal(amount){
+    tot+=amount;
+    discount = $("#txtOrderDiscount").val();
+    discount = (tot / 100) * itemDiscount;
+    tot = tot-discount;
+    $("#txtSubTotal").val(tot);
+}
 
+function updateManageTotal(prvTotal,nowTotal) {
+    tot -= prvTotal;
+    tot += nowTotal;
+
+    $("#txtSubTotal").val(tot);
 }
 
 function manageQuantity(prevQty,nowQty){
@@ -193,9 +210,11 @@ function placeOrder(){
     let oid = $("#txtOrderId").val();
     let cId = $("#orderCusCmb").val();
     let oDate = $("#orderDate").val();
-    let total = $("#lblTotal").val();
+    let total = $("#txtSubTotal").val();
 
     orderDB.push(new OrderDTO(oid, cId, oDate, total));
+
+    $("#txtSubTotal").val("");
 
 }
 

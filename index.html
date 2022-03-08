@@ -21,19 +21,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item fs-5">
                         <a aria-current="page" class="nav-link" href="#" id="linkHome">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fs-5">
                         <a class="nav-link" href="#" id="linkCustomer">Customer</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fs-5">
                         <a class="nav-link" href="#" id="linkItem">Items</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fs-5">
                         <a class="nav-link" href="#" id="linkOrder">Orders</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fs-5">
                         <a class="nav-link" href="#" id="linkPurchaseOrder">Purchase Order</a>
                     </li>
                 </ul>
@@ -129,8 +129,8 @@
 </section>
 
 <!--Customer Manage Content Start-->
-<section class="container-fluid mt-3" id="customerContent">
-    <section class="container-fluid mt-3">
+<section class="container-fluid mt-5" id="customerContent">
+    <section class="container-fluid mt-5">
         <div class="row">
             <div class="mb-3 col">
                 <label class="form-label" for="txtCusId">Customer ID</label>
@@ -192,7 +192,7 @@
 </section>
 
 <!--Item Manage Content Start-->
-<section class="container-fluid mt-3" id="itemContent">
+<section class="container-fluid mt-5" id="itemContent">
     <section class="container-fluid mt-3">
         <div class="row">
             <div class="mb-3 col">
@@ -221,16 +221,16 @@
     </section>
 
     <section class="container-fluid mt-3 button">
-        <button class="btn btn-danger" type="button" id="btnItemDelete">Delete</button>
-        <button class="btn btn-success" type="button" id="btnItemUpdate">Update</button>
-        <button class="btn btn-primary" type="button" id="btnItemSave">Add Item</button>
+        <button class="btn btn-danger" id="btnItemDelete" type="button">Delete</button>
+        <button class="btn btn-success" id="btnItemUpdate" type="button">Update</button>
+        <button class="btn btn-primary" id="btnItemSave" type="button">Add Item</button>
 
     </section>
 
     <section class="container-fluid mt-3">
         <form class="d-flex">
             <input aria-label="Search" class="form-control me-2" id="txtSearchItem" placeholder="Search" type="search">
-            <button class="btn btn-outline-success" type="submit" id="btnItemSearch">Search</button>
+            <button class="btn btn-outline-success" id="btnItemSearch" type="submit">Search</button>
         </form>
     </section>
 
@@ -255,41 +255,38 @@
 
 <!--Order Manage Content Start-->
 <section class="container-fluid mt-3" id="orderContent">
-    <article class=" mt-5"></article>
+    <article class="mt-5"></article>
     <article>
-        <div class="container-fluid">
+        <div class="container-fluid ">
             <div class="row">
-                <div class="col">
+                <div class="col" style="margin-top: -5vh">
                     <div class="jumbotron mt-5 container-fluid ">
                         <div class="row">
                             <div class="col">
                                 <div class="card border border-primary">
-                                    <div class="card-header">Order Details</div>
+                                    <div class="card-header bg-primary  fw-bolder text-white">Order Details</div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col mt-3">
                                                 <input class="form-control" disabled id="orderDate" type="text">
                                             </div>
                                             <div class="col mt-3">
-                                                <input aria-label="Order Id" class="form-control" disabled id="txtOrderId"
+                                                <input aria-label="Order Id" class="form-control" disabled
+                                                       id="txtOrderId"
                                                        placeholder="Order Id" type="text">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-5">
-                                    <div class="card border border-primary">
-                                        <div class="card-header">Customer Select</div>
+                                    <div class="card border border-primary mt-0">
+                                        <div class="card-header bg-primary  fw-bolder text-white">Customer Select</div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    <button class="btn btn-outline-info col-12 col-xl-auto mt-2 mt-xl-0
-                                                    ml-0 ml-xl-2" id="btnGoToCustomer">New Customer
-                                                    </button>
-                                                </div>
                                                 <div class="col">
                                                     <div class="col mt-3">
-                                                        <select class="form-select" aria-label="Default select example" id="orderCusCmb">
+                                                        <select aria-label="Default select example" class="form-select"
+                                                                id="orderCusCmb">
                                                             <option>Customer Id</option>
                                                         </select>
                                                     </div>
@@ -311,14 +308,15 @@
                 <div class="col">
                     <div class="container">
                         <div class="row">
-                            <div class="col">
+                            <div class="col" style="margin-top: -5vh">
                                 <div class=" mt-5">
                                     <div class="card border border-primary">
-                                        <div class="card-header">Item Select</div>
+                                        <div class="card-header bg-primary  fw-bolder text-white">Item Select</div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
-                                                    <select class="form-select" aria-label="Default select example" id="orderItemCmb">
+                                                    <select aria-label="Default select example" class="form-select"
+                                                            id="orderItemCmb">
                                                         <option>Item Code</option>
                                                     </select>
                                                 </div>
@@ -354,10 +352,30 @@
                                                            placeholder="Discount"
                                                            type="text">
                                                 </div>
-                                                <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    <button class="btn btn-outline-info col-12 col-xl-auto mt-2 mt-xl-0
-                                                    ml-0 ml-xl-2" id="btnGoToItem">Add Item
+                                                <section class="container-fluid mt-3 button">
+                                                    <button class="btn btn-danger" id="btnRemove" type="button">Remove
                                                     </button>
+                                                    <button class="btn btn-primary" id="btnAddToCart" type="button">Add
+                                                        To Cart
+                                                    </button>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" mt-5">
+                                    <div class="card border border-primary">
+                                        <div class="card-header bg-primary  fw-bolder text-white">Invoice Details</div>
+                                        <div class="card-body">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col mt-3">
+                                                        <input aria-label="Sub Total" class="form-control"
+                                                               id="txtSubTotal"
+                                                               placeholder="Sub Total" type="text">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -369,38 +387,8 @@
                 </div>
             </div>
         </div>
+        </div>
     </article>
-
-<!--    <div class="row">-->
-<!--        <div class="col-1 mt-4">-->
-<!--            <p class="fs-1 order" >Total</p>-->
-<!--        </div>-->
-<!--        <div class="col-2 mt-4">-->
-<!--            <input type="text" id="txtOrderTotal" placeholder="8000">-->
-<!--        </div>-->
-<!--    </div>-->
-    <div class="col-lg-3">
-        <section class="content-box-2 p-4 " id="contentBox">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <span class="" id="total-text">Total : </span>
-                        </div>
-                        <div class="col-12">
-                            <span id="total">00.0</span> Rs/=
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <section class="container-fluid mt-3 button">
-        <button class="btn btn-danger" type="button" id="btnRemove">Remove</button>
-        <button class="btn btn-primary" type="button" id="btnAddToCart">Add To Cart</button>
-    </section>
-
     <section class="row mt-4">
         <div class="col">
             <table class="table table-hover">
@@ -419,14 +407,13 @@
             </table>
         </div>
     </section>
-
     <section class="container-fluid mt-3 placeOrder">
         <button class="btn btn-success" id="btnPlaceOrder" type="button">Place Order</button>
     </section>
 </section>
 
 <!--Purchase Order Manage Content Start-->
-<section class="container-fluid mt-3" id="purchaseOrderContent">
+<section class="container-fluid mt-5" id="purchaseOrderContent">
     <section class="row mt-4">
         <div class="col">
             <table class="table table-hover">
@@ -444,7 +431,7 @@
             </table>
         </div>
     </section>
-    <section class="row mt-4">
+    <section class="row">
         <div class="col">
             <table class="table table-hover">
                 <thead class="bg-info text-white">
